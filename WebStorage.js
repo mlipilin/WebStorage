@@ -332,8 +332,16 @@ var WebStorage = WebStorage || (function () {
                 name: name
             };
 
-            // Check supporting localStorage, Cookies or UserData
-            return new CookieStorage(parameters);
+            // Check supporting localStorage, UserData or Cookies
+			if (window.localStorage) {
+				return new LocalStorage(parameters);
+			}
+			else if(window.UserDataStorage && new UserDataStorage()){
+				
+			}
+			else {
+				return new CookieStorage(parameters);
+			}	
         }
     };
 
