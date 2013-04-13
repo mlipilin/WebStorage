@@ -4,6 +4,14 @@
 var WebStorage = WebStorage || (function () {
     "use strict";
 
+    var extend = extend || function (Child, Parent) {
+        function F() { }
+        F.prototype = Parent.prototype;
+        Child.prototype = new F();
+        Child.prototype.constructor = Child;
+        Child.parent = Parent.prototype;
+    };
+
     /**
      * Base storage class. 
      *
@@ -347,11 +355,3 @@ var WebStorage = WebStorage || (function () {
 
     return WebStorage;
 })();
-
-var extend = extend || function (Child, Parent) {
-    function F() { }
-    F.prototype = Parent.prototype;
-    Child.prototype = new F();
-    Child.prototype.constructor = Child;
-    Child.parent = Parent.prototype;
-};

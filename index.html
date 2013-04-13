@@ -2,9 +2,21 @@
 <html>
     <head>
         <title>Web Storage</title>
-        <script type="text/javascript" src="WebStorage.js"></script>
     </head>
     <body>
-        
+        <script type="text/javascript" src="WebStorage.js"></script>
+        <script type="text/javascript">
+        	(function(){
+        		// Create client storage
+        		var mydb = WebStorage.create("mydb"),
+        			myValue = null;
+
+        		// Set value to storage
+        		mydb.setItem("myKey", "myValue");
+        		
+        		// Get value from storage
+        		myValue = mydb.getItem("myKey");
+        	})();
+        </script>
     </body>
 </html>
